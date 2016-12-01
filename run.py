@@ -1,13 +1,14 @@
 # -*- coding: utf8 -*-
 from bs4 import BeautifulSoup as bs
+from datetime import datetime
+import itertools
+import json
 import requests as r
 import re
-import itertools
-from datetime import datetime
-import json
 
 import os
 import psycopg2
+'''
 import urlparse
 
 urlparse.uses_netloc.append("postgres")
@@ -20,7 +21,7 @@ conn = psycopg2.connect(
     host=url.hostname,
     port=url.port
 )
-
+'''
 def dateifyer(dateString):
     return datetime.strptime(str(dateString), '%d.%m.%y')
 
