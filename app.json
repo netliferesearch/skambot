@@ -6,7 +6,7 @@
     "NRK"
   ],
   "repository": "https://github.com/netliferesearch/skambot",
-  "logo": "https://github.com/netliferesearch/skambot/raw/master/logo.png",
+  "logo": "https://github.com/netliferesearch/skambot/raw/master/img/logo.png",
   "success_url": "http://skam.p3.no",
   "env": {
     "WEBHOOK_URL": {
