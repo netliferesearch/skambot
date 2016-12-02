@@ -2,3 +2,4 @@ beautifulsoup4==4.5.1
 bs4==0.0.1
 psycopg2==2.6.2
 requests==2.11.1
+python-dotenv==0.6.1

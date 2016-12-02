@@ -16,7 +16,9 @@ from dotenv import load_dotenv
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
+WEBHOOK_URL = osenviron.get("WEBHOOK_URL")
 DATABASE_URL = os.environ.get("DATABASE_URL")
+
 urllib.parse.uses_netloc.append("mysql")
 url = urllib.parse.urlparse(DATABASE_URL)
 
@@ -28,9 +30,6 @@ conn = psycopg2.connect(
     port=url.port
 )
 cursor = conn.cursor()
-
-def dateifyer(dateString):
-    return datetime.strptime(str(dateString), '%d.%m.%y')
 
 def post_to_slack(tittel, url, r):
     payload = u'Noe nytt har skjedd på SKAM: <' + url + '|'+tittel+'>'
@@ -45,12 +44,7 @@ def post_to_slack(tittel, url, r):
             % (response.status_code, response.text)
         )
 
-WEBHOOK_URL = "https://hooks.slack.com/services/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"
 
-'''
-payload={"text": "A very important thing has occurred! <https://alert-system.com/alerts/1234|Click here> for details!"}
-
-'''
 page = r.get('http://skam.p3.no')
 content = page.content
 soup = bs(content, "html.parser")
