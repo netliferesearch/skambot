@@ -1,6 +1,7 @@
 # SKAMBOT
 
 ![Linn og Eskild og Isak](linn_og_eskild_og_isak.gif)
+
 Skambot er gaffet fort sammen for å kunne gi oss beskjed i kanalen #skam i Slack når det har kommet noe nytt på [skam.p3.no](http://skam.p3.no). Siden NRK tilsynelatende har noen RSS-feed lengre kjører vi et lite webscraping script i Python som titter på nettsiden om det er noe nytt. Om tittelen ikke matcher den siste som er lagt i databasen, poster den en melding i Slack.
 
 ## Installere skambot
