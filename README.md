@@ -34,5 +34,5 @@ Du finner Heroku Scheduler under *Resources* -> *Add-ons* i Heroku-dashboardet. 
 
 Laga med :heart: av dine venner i [Netlife Research](http://www.netliferesearch.com).
 
-![Fra Julebordet](img/netlife_julebord_nytt_skamklipp.jpg)
+![Fra Julebordet](img/netlife_julebord_nytt_skamklipp.png)
 *Når man er på julebord og det kommer et nytt SKAM-klipp*
