@@ -1,0 +1,36 @@
+{
+  "name": "Skambot",
+  "description": "Bare sjekker om det har skjedd noe nytt på SKAM hvert tiende minutt lissom.",
+  "keywords": [
+    "SKAM",
+    "NRK"
+  ],
+  "repository": "https://github.com/netliferesearch/skambot",
+  "logo": "",
+  "success_url": "http://skam.p3.no",
+  "env": {
+    "DATABASE_URL": {
+      "description": "URL to Postgres db"
+    },
+    "WEBHOOK_URL": {
+      "description": "Incoming webhook in Slack."
+    }
+  },
+  "image": "heroku/python",
+  "addons": [
+    {
+      "plan": "heroku-postgresql",
+      "options": {
+        "version": "9.5"
+      }
+    },
+    {
+      "plan": "scheduler"
+    }
+  ],
+  "buildpacks": [
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-python"
+    }
+  ]
+}
