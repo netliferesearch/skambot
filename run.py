@@ -28,6 +28,9 @@ conn = psycopg2.connect(
 )
 cursor = conn.cursor()
 
+cursor.execute("CREATE TABLE IF NOT EXISTS updates2(id serial PRIMARY KEY, title VARCHAR (255) UNIQUE NOT NULL);")
+conn.commit()
+
 def post_to_slack(tittel, url, r):
     payload = u'Noe nytt har skjedd på SKAM: <' + url + '|'+tittel+'>'
     slack_data = {'text': payload}
@@ -48,13 +51,19 @@ articles = soup.find_all('article')
 bylines = [byline.text.replace('\n','') for byline in soup.select('.byline')]
 link = articles[0].find_all('a', href=True)[0]['href']
 
-cursor.execute("SELECT * FROM updates ORDER BY ID DESC")
+cursor.execute("SELECT * FROM updates2 ORDER BY ID DESC")
 records = cursor.fetchall()
+
+if not records:
+    cursor.execute("INSERT INTO updates2 (title) VALUES (%s) ON CONFLICT DO NOTHING", ["Skambot ass."])
+    conn.commit()
+    print("Måtte lissom legge noe i tabellen a")
 if records:
     if records[0][1] != bylines[0]:
-        post_to_slack(bylines[0], link, r)
-        cursor.execute("INSERT INTO updates (title) VALUES (%s)", [bylines[0]])
+        # post_to_slack(bylines[0], link, r)
+        cursor.execute("INSERT INTO updates2 (title) VALUES (%s)", [bylines[0]])
         conn.commit()
-        print('Ny episode')
+        print('Awsm! Ny episode :) :) :)')
     else:
-        print('Ingenting nytt.')
+        print('Ingenting nytt :(')
+conn.close()
