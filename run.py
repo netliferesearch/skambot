@@ -10,10 +10,8 @@ import psycopg2
 import urllib.parse
 
 from os.path import join, dirname
-from dotenv import load_dotenv
-
-dotenv_path = join(dirname(__file__), '.env')
-load_dotenv(dotenv_path)
+from dotenv import load_dotenv, find_dotenv
+load_dotenv(find_dotenv())
 
 WEBHOOK_URL = os.environ.get("WEBHOOK_URL")
 DATABASE_URL = os.environ.get("DATABASE_URL")
@@ -57,5 +55,6 @@ if records:
         post_to_slack(bylines[0], link, r)
         cursor.execute("INSERT INTO updates (title) VALUES (%s)", [bylines[0]])
         conn.commit()
+        print('Ny episode')
     else:
         print('Ingenting nytt.')
