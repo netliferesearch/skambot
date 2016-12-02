@@ -9,9 +9,6 @@
   "logo": "https://github.com/netliferesearch/skambot/raw/master/logo.png",
   "success_url": "http://skam.p3.no",
   "env": {
-    "DATABASE_URL": {
-      "description": "URL to Postgres db"
-    },
     "WEBHOOK_URL": {
       "description": "Incoming webhook in Slack."
     }
