@@ -16,7 +16,7 @@ from dotenv import load_dotenv
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
-WEBHOOK_URL = osenviron.get("WEBHOOK_URL")
+WEBHOOK_URL = os.environ.get("WEBHOOK_URL")
 DATABASE_URL = os.environ.get("DATABASE_URL")
 
 urllib.parse.uses_netloc.append("mysql")
